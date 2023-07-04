@@ -36,7 +36,7 @@
 </footer>
 
 <script src="vendors/babel.min.js"></script>
-<script type="text/babel">
+<script>
     function Header() {
         let [expanded, setExpanded] = React.useState(false);
         let [toggled, setToggled] = React.useState(false);
@@ -49,7 +49,7 @@
             setExpanded(!expanded);
         };
 
-        return <header className="header">
+        return (<header className="header">
             <a href="/" className="header__logo" aria-label="Яндекс.Дом"></a>
             <button className="header__menu" aria-expanded={expanded ? 'true' : 'false'} onClick={onClick}>
                 <span className="header__menu-text a11y-hidden">
@@ -67,7 +67,7 @@
                     <a className="header__link" href="/scripts">Сценарии</a>
                 </li>
             </ul>
-        </header>;
+        </header>);
     }
 
     function Event(props) {
