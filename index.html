@@ -225,7 +225,7 @@
 
         let sizes = [];
         const onSize = size => {
-            sizes.push(size);
+            sizes = [...sizes, size];
         };
 
         React.useEffect(() => {
