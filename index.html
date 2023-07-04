@@ -35,7 +35,6 @@
     </div>
 </footer>
 
-<!--<script src="vendors/babel.min.js"></script>-->
 <script>
     function Header() {
         let [expanded, setExpanded] = React.useState(false);
@@ -96,7 +95,8 @@
         );
     }
 
-    function Event(props) {
+
+    const Event = React.memo((props) => {
         const ref = React.useRef();
 
         const { onSize } = props;
@@ -128,7 +128,7 @@
             )
           )
         );
-    }
+    });
 
     const TABS = {
         all: {
