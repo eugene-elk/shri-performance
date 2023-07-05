@@ -1137,16 +1137,16 @@
       );
     }
 
+    const element = React.createElement(
+      React.Fragment,
+      null,
+      React.createElement(Header, null),
+      React.createElement(Main, null)
+    );
+
     setTimeout(() => {
-        const root = ReactDOM.createRoot(document.getElementById('app'));
-        root.render(
-          React.createElement(
-            React.Fragment,
-            null,
-            React.createElement(Header, null),
-            React.createElement(Main, null)
-          )
-        );
+      const root = ReactDOM.createRoot(document.getElementById('app'));
+      root.render(element);
     }, 10);
 
 </script>
