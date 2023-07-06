@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.16 -->
+<!--    version 0.0.17 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -866,7 +866,7 @@
       console.log("activeTab:", activeTab);
       console.log("one more useEffect:", sumWidth);
 
-      const scrollerWidth = ref.current.querySelector('.section__panel:not(.section__panel_hidden)').width;
+      const scrollerWidth = ref.current.querySelector('.section__panel:not(.section__panel_hidden)').offsetWidth;
       console.log("scrollerWidth:", scrollerWidth);
 
 
