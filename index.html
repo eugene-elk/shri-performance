@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.29 -->
+<!--    version 0.0.30 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -1068,10 +1068,7 @@
                 ref={getRef(index_wrapper)}
               >
                   {TABS[key].items.map((item, index) =>
-                    <Event
-                      key={index}
-                      {...item}
-                    />
+                    uniqueEventsComponents[item.event]
                   )}
               </ul>
             </div>
