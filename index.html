@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.20 -->
+<!--    version 0.0.21 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -1040,7 +1040,6 @@
         <div className="section__panel-wrapper" ref={ref}>
           {TABS_KEYS.map((key, index_wrapper) =>
             <div
-              ref={getRef(index_wrapper)}
               key={key}
               role="tabpanel"
               className={'section__panel' + (key === activeTab ? '' : ' section__panel_hidden')}
@@ -1048,7 +1047,10 @@
               id={`panel_${key}`}
               aria-labelledby={`tab_${key}`}
             >
-              <ul className="section__panel-list">
+              <ul
+                className="section__panel-list"
+                ref={getRef(index_wrapper)}
+              >
                 {TABS[key].items.map((item, index) =>
                   <Event
                     key={index}
