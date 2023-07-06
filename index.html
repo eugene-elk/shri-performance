@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.13 -->
+<!--    version 0.0.14 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -853,16 +853,14 @@
     console.log("new main");
 
     let sizes = [];
-    console.log("Sizes before:", sizes);
     const onSize = size => {
       sizes = [...sizes, size];
     };
 
-    console.log("------");
-
     React.useEffect(() => {
-      console.log("activeTab:", activeTab);
+
       const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
+      console.log("activeTab:", activeTab);
       console.log("one more useEffect", sumWidth);
 
       const newHasRightScroll = sumWidth > ref.current.offsetWidth;
