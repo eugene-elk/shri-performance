@@ -744,6 +744,7 @@
   const TABS = {
     all: {
       title: 'Все',
+      size: 512,
       items: [{
         icon: 'light2',
         iconLabel: 'Освещение',
@@ -788,6 +789,7 @@
     },
     kitchen: {
       title: 'Кухня',
+      size: 2,
       items: [{
         icon: 'light2',
         iconLabel: 'Освещение',
@@ -802,6 +804,7 @@
     },
     hall: {
       title: 'Зал',
+      size: 2,
       items: [{
         icon: 'light',
         iconLabel: 'Освещение',
@@ -816,6 +819,7 @@
     },
     lights: {
       title: 'Лампочки',
+      size: 4,
       items: [{
         icon: 'light',
         iconLabel: 'Освещение',
@@ -840,6 +844,7 @@
     },
     cameras: {
       title: 'Камеры',
+      size: 1,
       items: [{
         icon: 'light2',
         iconLabel: 'Освещение',
@@ -856,7 +861,7 @@
   function Main() {
     const ref = React.useRef();
     const initedRef = React.useRef(false);
-    const [activeTab, setActiveTab] = React.useState('');
+    const [activeTab, setActiveTab] = React.useState('all');
     const [hasRightScroll, setHasRightScroll] = React.useState(false);
 
     React.useEffect(() => {
@@ -876,8 +881,10 @@
     };
 
     React.useEffect(() => {
-      const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
-      const sumHeight = sizes.reduce((acc, item) => acc + item.height, 0);
+      const sumWidth = sizes.reduce((acc, item) => {
+        console.log("Item width:", item.width);
+        return acc + item.width
+      }, 0);
 
       const newHasRightScroll = sumWidth > ref.current.offsetWidth;
       if (newHasRightScroll !== hasRightScroll) {
