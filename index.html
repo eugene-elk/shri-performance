@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.25 -->
+<!--    version 0.0.26 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -840,6 +840,18 @@
   }
   const TABS_KEYS = Object.keys(TABS);
 
+  function Event(props) {
+    return <li className={'event' + (props.slim ? ' event_slim' : '')}>
+      <button className="event__button">
+        <span className={`event__icon event__icon_${props.icon}`} role="img" aria-label={props.iconLabel}></span>
+        <h4 className="event__title">{props.title}</h4>
+        {props.subtitle &&
+          <span className="event__subtitle">{props.subtitle}</span>
+        }
+      </button>
+    </li>;
+  }
+
   function Main() {
     const ref = React.useRef();
     const [activeTab, setActiveTab] = React.useState('');
@@ -858,17 +870,11 @@
       setActiveTab(event.target.value);
     };
 
-    console.log("new main");
-
     React.useEffect(() => {
-
-      console.log("activeTab:", activeTab);
       const widths = refs.map(ref => ref.current.scrollWidth);
-      const maxWidth = Math.max(...widths);
-      console.log("maxWidth from refs:", maxWidth);
-      console.log("window width:", ref.current.offsetWidth);
+      const position = TABS_KEYS.indexOf(activeTab);
+      const maxWidth = widths[position];
 
-      //const newHasRightScroll = sumWidth > ref.current.offsetWidth;
       const newHasRightScroll = maxWidth > ref.current.offsetWidth;
       if (newHasRightScroll !== hasRightScroll) {
         setHasRightScroll(newHasRightScroll);
@@ -884,18 +890,6 @@
         });
       }
     };
-
-    function Event(props) {
-      return <li className={'event' + (props.slim ? ' event_slim' : '')}>
-        <button className="event__button">
-          <span className={`event__icon event__icon_${props.icon}`} role="img" aria-label={props.iconLabel}></span>
-          <h4 className="event__title">{props.title}</h4>
-          {props.subtitle &&
-            <span className="event__subtitle">{props.subtitle}</span>
-          }
-        </button>
-      </li>;
-    }
 
     return <main className="main">
       <section className="section main__general">
