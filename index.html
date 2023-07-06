@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.15 -->
+<!--    version 0.0.16 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -865,7 +865,10 @@
       const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
       console.log("activeTab:", activeTab);
       console.log("one more useEffect:", sumWidth);
-      console.log("div width:", refDiv.current?.offsetWidth)
+
+      const scrollerWidth = ref.current.querySelector('.section__panel:not(.section__panel_hidden)').width;
+      console.log("scrollerWidth:", scrollerWidth);
+
 
       const newHasRightScroll = sumWidth > ref.current.offsetWidth;
       if (newHasRightScroll !== hasRightScroll) {
@@ -1035,6 +1038,7 @@
         <div className="section__panel-wrapper" ref={ref}>
           {TABS_KEYS.map(key =>
             <div
+              //ref={refDiv}
               key={key}
               role="tabpanel"
               className={'section__panel' + (key === activeTab ? '' : ' section__panel_hidden')}
@@ -1042,7 +1046,7 @@
               id={`panel_${key}`}
               aria-labelledby={`tab_${key}`}
             >
-              <ul ref={refDiv} className="section__panel-list">
+              <ul className="section__panel-list">
                 {TABS[key].items.map((item, index) =>
                   <Event
                     key={index}
