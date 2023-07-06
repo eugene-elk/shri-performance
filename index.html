@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.23 -->
+<!--    version 0.0.24 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -876,7 +876,8 @@
       console.log("maxWidth from refs:", maxWidth);
       console.log("window width:", ref.current.offsetWidth);
 
-      const newHasRightScroll = sumWidth > ref.current.offsetWidth;
+      //const newHasRightScroll = sumWidth > ref.current.offsetWidth;
+      const newHasRightScroll = maxWidth > ref.current.offsetWidth;
       if (newHasRightScroll !== hasRightScroll) {
         setHasRightScroll(newHasRightScroll);
       }
