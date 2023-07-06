@@ -876,16 +876,16 @@
 
     let sizes = 0;
     const onSize = size => {
-      sizes += size;
+      sizes = [...sizes, size];
     };
 
     React.useEffect(() => {
       const sumWidth = sizes.reduce((acc, item) => {
-        console.log("Item width:", item.width);
-        return acc + item.width;
+        console.log("Item width:", item);
+        return acc + item;
       }, 0);
 
-      const newHasRightScroll = sizes > ref.current.offsetWidth;
+      const newHasRightScroll = sumWidth > ref.current.offsetWidth;
       if (newHasRightScroll !== hasRightScroll) {
         setHasRightScroll(newHasRightScroll);
       }
