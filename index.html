@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.5 -->
+<!--    version 0.0.6 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -853,11 +853,15 @@
     };
 
     console.log("new main");
-    console.log("------")
+
     let sizes = [];
+    console.log("Sizes before:", sizes);
     const onSize = size => {
       sizes = [...sizes, size];
     };
+    console.log("Sizes after:", sizes);
+
+    console.log("------");
 
     React.useEffect(() => {
       const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
