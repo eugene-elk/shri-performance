@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru">
+<!--    version 0.0.3 -->
 <head>
-<!--    version 0.0.2 -->
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
@@ -704,7 +704,7 @@
                     {expanded ? 'Закрыть меню' : 'Открыть меню'}
                 </span>
       </button>
-      <ul className={'header__links' + (expanded ? ' header__links_opened' : '')}>
+      <ul className={'header__links' + (expanded ? ' header__links_opened' : '') + (toggled ? ' header__links-toggled' : '')}>
         <li className="header__item">
           <a className="header__link header__link_current" href="/" aria-current="page">Сводка</a>
         </li>
