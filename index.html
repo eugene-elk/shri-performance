@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.19 -->
+<!--    version 0.0.20 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -844,7 +844,9 @@
     const ref = React.useRef();
     const [activeTab, setActiveTab] = React.useState('');
     const [hasRightScroll, setHasRightScroll] = React.useState(false);
-    const refDiv = Array<React.useRef()>[5];
+
+    const refs = TABS_KEYS.map(() => React.useRef());
+    const getRef = index => refs[index];
 
     React.useEffect(() => {
       if (!activeTab) {
@@ -869,14 +871,9 @@
       console.log("activeTab:", activeTab);
       console.log("one more useEffect:", sumWidth);
 
-      for (let i = 0; i < 5; i++) {
-        if (refDiv[i].current) {
-          console.log(refDiv[i].current?.offsetWidth);
-        }
-        else {
-          console.log("no refDiv");
-        }
-      }
+      refs.forEach(refEl => {
+        console.log(refEl.current.offsetWidth);
+      });
 
       const newHasRightScroll = sumWidth > ref.current.offsetWidth;
       if (newHasRightScroll !== hasRightScroll) {
@@ -1041,9 +1038,9 @@
         </div>
 
         <div className="section__panel-wrapper" ref={ref}>
-          {TABS_KEYS.map((key, i) =>
+          {TABS_KEYS.map((key, index_wrapper) =>
             <div
-              ref={refDiv[i]}
+              ref={getRef(index_wrapper)}
               key={key}
               role="tabpanel"
               className={'section__panel' + (key === activeTab ? '' : ' section__panel_hidden')}
