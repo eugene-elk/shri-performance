@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.28 -->
+<!--    version 0.0.29 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -723,135 +723,6 @@
     </header>;
   }
 
-  const TABS = {
-    all: {
-      title: 'Все',
-      size: 512,
-      items: [{
-        icon: 'light2',
-        iconLabel: 'Освещение',
-        title: 'Xiaomi Yeelight LED Smart Bulb',
-        subtitle: 'Включено'
-      }, {
-        icon: 'light',
-        iconLabel: 'Освещение',
-        title: 'D-Link Omna 180 Cam',
-        subtitle: 'Включится в 17:00'
-      }, {
-        icon: 'temp',
-        iconLabel: 'Температура',
-        title: 'Elgato Eve Degree Connected',
-        subtitle: 'Выключено до 17:00'
-      }, {
-        icon: 'light',
-        iconLabel: 'Освещение',
-        title: 'LIFX Mini Day & Dusk A60 E27',
-        subtitle: 'Включится в 17:00'
-      }, {
-        icon: 'light2',
-        iconLabel: 'Освещение',
-        title: 'Xiaomi Mi Air Purifier 2S',
-        subtitle: 'Включено'
-      }, {
-        icon: 'light',
-        iconLabel: 'Освещение',
-        title: 'Philips Zhirui',
-        subtitle: 'Включено'
-      }, {
-        icon: 'light',
-        iconLabel: 'Освещение',
-        title: 'Philips Zhirui',
-        subtitle: 'Включено'
-      }, {
-        icon: 'light2',
-        iconLabel: 'Освещение',
-        title: 'Xiaomi Mi Air Purifier 2S',
-        subtitle: 'Включено'
-      }]
-    },
-    kitchen: {
-      title: 'Кухня',
-      size: 2,
-      items: [{
-        icon: 'light2',
-        iconLabel: 'Освещение',
-        title: 'Xiaomi Yeelight LED Smart Bulb',
-        subtitle: 'Включено'
-      }, {
-        icon: 'temp',
-        iconLabel: 'Температура',
-        title: 'Elgato Eve Degree Connected',
-        subtitle: 'Выключено до 17:00'
-      }]
-    },
-    hall: {
-      title: 'Зал',
-      size: 2,
-      items: [{
-        icon: 'light',
-        iconLabel: 'Освещение',
-        title: 'Philips Zhirui',
-        subtitle: 'Выключено'
-      }, {
-        icon: 'light2',
-        iconLabel: 'Освещение',
-        title: 'Xiaomi Mi Air Purifier 2S',
-        subtitle: 'Выключено'
-      }]
-    },
-    lights: {
-      title: 'Лампочки',
-      size: 4,
-      items: [{
-        icon: 'light',
-        iconLabel: 'Освещение',
-        title: 'D-Link Omna 180 Cam',
-        subtitle: 'Включится в 17:00'
-      }, {
-        icon: 'light',
-        iconLabel: 'Освещение',
-        title: 'LIFX Mini Day & Dusk A60 E27',
-        subtitle: 'Включится в 17:00'
-      }, {
-        icon: 'light2',
-        iconLabel: 'Освещение',
-        title: 'Xiaomi Mi Air Purifier 2S',
-        subtitle: 'Включено'
-      }, {
-        icon: 'light',
-        iconLabel: 'Освещение',
-        title: 'Philips Zhirui',
-        subtitle: 'Включено'
-      }]
-    },
-    cameras: {
-      title: 'Камеры',
-      size: 1,
-      items: [{
-        icon: 'light2',
-        iconLabel: 'Освещение',
-        title: 'Xiaomi Mi Air Purifier 2S',
-        subtitle: 'Включено'
-      }]
-    }
-  };
-
-  let uniqueEvents = new Set();
-  for (let key in TABS) {
-    TABS[key].items.forEach((item) => {
-      uniqueEvents.add(JSON.stringify(item));
-    })
-  }
-
-  for (let event of uniqueEvents) {
-    console.log(event);
-  }
-
-  for (let i = 0; i < 6; ++i) {
-    TABS.all.items = [...TABS.all.items, ...TABS.all.items];
-  }
-  const TABS_KEYS = Object.keys(TABS);
-
   function Event(props) {
     return <li className={'event' + (props.slim ? ' event_slim' : '')}>
       <button className="event__button">
@@ -863,6 +734,163 @@
       </button>
     </li>;
   }
+
+  const TABS = {
+    all: {
+      title: 'Все',
+      size: 512,
+      items: [{
+        event: 0,
+        icon: 'light2',
+        iconLabel: 'Освещение',
+        title: 'Xiaomi Yeelight LED Smart Bulb',
+        subtitle: 'Включено'
+      }, {
+        event: 1,
+        icon: 'light',
+        iconLabel: 'Освещение',
+        title: 'D-Link Omna 180 Cam',
+        subtitle: 'Включится в 17:00'
+      }, {
+        event: 2,
+        icon: 'temp',
+        iconLabel: 'Температура',
+        title: 'Elgato Eve Degree Connected',
+        subtitle: 'Выключено до 17:00'
+      }, {
+        event: 3,
+        icon: 'light',
+        iconLabel: 'Освещение',
+        title: 'LIFX Mini Day & Dusk A60 E27',
+        subtitle: 'Включится в 17:00'
+      }, {
+        event: 4,
+        icon: 'light2',
+        iconLabel: 'Освещение',
+        title: 'Xiaomi Mi Air Purifier 2S',
+        subtitle: 'Включено'
+      }, {
+        event: 5,
+        icon: 'light',
+        iconLabel: 'Освещение',
+        title: 'Philips Zhirui',
+        subtitle: 'Включено'
+      }, {
+        event: 6,
+        icon: 'light',
+        iconLabel: 'Освещение',
+        title: 'Philips Zhirui',
+        subtitle: 'Включено'
+      }, {
+        event: 4,
+        icon: 'light2',
+        iconLabel: 'Освещение',
+        title: 'Xiaomi Mi Air Purifier 2S',
+        subtitle: 'Включено'
+      }]
+    },
+    kitchen: {
+      title: 'Кухня',
+      size: 2,
+      items: [{
+        event: 0,
+        icon: 'light2',
+        iconLabel: 'Освещение',
+        title: 'Xiaomi Yeelight LED Smart Bulb',
+        subtitle: 'Включено'
+      }, {
+        event: 2,
+        icon: 'temp',
+        iconLabel: 'Температура',
+        title: 'Elgato Eve Degree Connected',
+        subtitle: 'Выключено до 17:00'
+      }]
+    },
+    hall: {
+      title: 'Зал',
+      size: 2,
+      items: [{
+        event: 7,
+        icon: 'light',
+        iconLabel: 'Освещение',
+        title: 'Philips Zhirui',
+        subtitle: 'Выключено'
+      }, {
+        event: 8,
+        icon: 'light2',
+        iconLabel: 'Освещение',
+        title: 'Xiaomi Mi Air Purifier 2S',
+        subtitle: 'Выключено'
+      }]
+    },
+    lights: {
+      title: 'Лампочки',
+      size: 4,
+      items: [{
+        event: 1,
+        icon: 'light',
+        iconLabel: 'Освещение',
+        title: 'D-Link Omna 180 Cam',
+        subtitle: 'Включится в 17:00'
+      }, {
+        event: 3,
+        icon: 'light',
+        iconLabel: 'Освещение',
+        title: 'LIFX Mini Day & Dusk A60 E27',
+        subtitle: 'Включится в 17:00'
+      }, {
+        event: 4,
+        icon: 'light2',
+        iconLabel: 'Освещение',
+        title: 'Xiaomi Mi Air Purifier 2S',
+        subtitle: 'Включено'
+      }, {
+        event: 6,
+        icon: 'light',
+        iconLabel: 'Освещение',
+        title: 'Philips Zhirui',
+        subtitle: 'Включено'
+      }]
+    },
+    cameras: {
+      title: 'Камеры',
+      size: 1,
+      items: [{
+        event: 4,
+        icon: 'light2',
+        iconLabel: 'Освещение',
+        title: 'Xiaomi Mi Air Purifier 2S',
+        subtitle: 'Включено'
+      }]
+    }
+  };
+
+  let uniqueEvents = new Map();
+  for (let key in TABS) {
+    TABS[key].items.forEach((item) => {
+      if (!uniqueEvents[item.event]) {
+        uniqueEvents[item.event] = item;
+      }
+    })
+  }
+
+  let uniqueEventsComponents = new Map();
+  for (let key in uniqueEvents) {
+    uniqueEventsComponents[key] = (
+      <Event
+        key={key}
+        icon={uniqueEvents[key].icon}
+        iconLabel={uniqueEvents[key].iconLabel}
+        title={uniqueEvents[key].title}
+        subtitle={uniqueEvents[key].subtitle}
+      />
+    )
+  }
+
+  for (let i = 0; i < 6; ++i) {
+    TABS.all.items = [...TABS.all.items, ...TABS.all.items];
+  }
+  const TABS_KEYS = Object.keys(TABS);
 
   function Main() {
     const ref = React.useRef();
@@ -1039,12 +1067,12 @@
                 className="section__panel-list"
                 ref={getRef(index_wrapper)}
               >
-                {TABS[key].items.map((item, index) =>
-                  <Event
-                    key={index}
-                    {...item}
-                  />
-                )}
+                  {TABS[key].items.map((item, index) =>
+                    <Event
+                      key={index}
+                      {...item}
+                    />
+                  )}
               </ul>
             </div>
           )}
