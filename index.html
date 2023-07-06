@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.9 -->
+<!--    version 0.0.10 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -861,7 +861,7 @@
     console.log("------");
 
     React.useEffect(() => {
-      console.log("activeTab");
+      console.log("activeTab:", activeTab);
       const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
       console.log("one more useEffect", sumWidth);
 
