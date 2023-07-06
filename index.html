@@ -859,12 +859,12 @@
     const onSize = size => {
       sizes = [...sizes, size];
     };
-    console.log("Sizes after:", sizes);
 
     console.log("------");
 
     React.useEffect(() => {
       const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
+      console.log("one more useEffect", sumWidth);
 
       const newHasRightScroll = sumWidth > ref.current.offsetWidth;
       if (newHasRightScroll !== hasRightScroll) {
