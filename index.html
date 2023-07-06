@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.21 -->
+<!--    version 0.0.22 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -872,7 +872,7 @@
       console.log("one more useEffect:", sumWidth);
 
       refs.forEach(refEl => {
-        console.log(refEl.current.offsetWidth);
+        console.log(refEl.current.scrollWidth);
       });
 
       const newHasRightScroll = sumWidth > ref.current.offsetWidth;
