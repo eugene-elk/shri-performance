@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.7 -->
+<!--    version 0.0.8 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -836,14 +836,12 @@
 
   function Main() {
     const ref = React.useRef();
-    const initedRef = React.useRef(false);
     const [activeTab, setActiveTab] = React.useState('');
     const [hasRightScroll, setHasRightScroll] = React.useState(false);
     //const [sizes, setSizes] = React.useState({});
 
     React.useEffect(() => {
-      if (!activeTab && !initedRef.current) {
-        initedRef.current = true;
+      if (!activeTab) {
         setActiveTab(new URLSearchParams(location.search).get('tab') || 'all');
       }
     }, []);
