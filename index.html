@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.14 -->
+<!--    version 0.0.15 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -834,11 +834,14 @@
   }
   const TABS_KEYS = Object.keys(TABS);
 
+
+
   function Main() {
     const ref = React.useRef();
     const [activeTab, setActiveTab] = React.useState('');
     const [hasRightScroll, setHasRightScroll] = React.useState(false);
-    //const [sizes, setSizes] = React.useState({});
+    const refDiv = React.useRef();
+
 
     React.useEffect(() => {
       if (!activeTab) {
@@ -861,7 +864,8 @@
 
       const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
       console.log("activeTab:", activeTab);
-      console.log("one more useEffect", sumWidth);
+      console.log("one more useEffect:", sumWidth);
+      console.log("div width:", refDiv.current?.offsetWidth)
 
       const newHasRightScroll = sumWidth > ref.current.offsetWidth;
       if (newHasRightScroll !== hasRightScroll) {
@@ -1030,13 +1034,20 @@
 
         <div className="section__panel-wrapper" ref={ref}>
           {TABS_KEYS.map(key =>
-            <div key={key} role="tabpanel" className={'section__panel' + (key === activeTab ? '' : ' section__panel_hidden')} aria-hidden={key === activeTab ? 'false' : 'true'} id={`panel_${key}`} aria-labelledby={`tab_${key}`}>
-              <ul className="section__panel-list">
+            <div
+              key={key}
+              role="tabpanel"
+              className={'section__panel' + (key === activeTab ? '' : ' section__panel_hidden')}
+              aria-hidden={key === activeTab ? 'false' : 'true'}
+              id={`panel_${key}`}
+              aria-labelledby={`tab_${key}`}
+            >
+              <ul ref={refDiv} className="section__panel-list">
                 {TABS[key].items.map((item, index) =>
                   <Event
                     key={index}
-                    {...item}
                     onSize={onSize}
+                    {...item}
                   />
                 )}
               </ul>
