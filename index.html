@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.17 -->
+<!--    version 0.0.18 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -699,11 +699,17 @@
     return <header className="header">
       <a href="/" className="header__logo" aria-label="Яндекс.Дом"></a>
       <button className="header__menu" aria-expanded={expanded ? 'true' : 'false'} onClick={onClick}>
-                <span className="header__menu-text a11y-hidden">
-                    {expanded ? 'Закрыть меню' : 'Открыть меню'}
-                </span>
+        <span className="header__menu-text a11y-hidden">
+          {expanded ? 'Закрыть меню' : 'Открыть меню'}
+        </span>
       </button>
-      <ul className={'header__links' + (expanded ? ' header__links_opened' : '') + (toggled ? ' header__links-toggled' : '')}>
+      <ul
+        className={
+          'header__links' +
+          (expanded ? ' header__links_opened' : '') +
+          (toggled ? ' header__links-toggled' : '')
+        }
+      >
         <li className="header__item">
           <a className="header__link header__link_current" href="/" aria-current="page">Сводка</a>
         </li>
@@ -834,14 +840,11 @@
   }
   const TABS_KEYS = Object.keys(TABS);
 
-
-
   function Main() {
     const ref = React.useRef();
     const [activeTab, setActiveTab] = React.useState('');
     const [hasRightScroll, setHasRightScroll] = React.useState(false);
-    const refDiv = React.useRef();
-
+    const refDiv = Array<React.useRef()>[5];
 
     React.useEffect(() => {
       if (!activeTab) {
@@ -866,9 +869,9 @@
       console.log("activeTab:", activeTab);
       console.log("one more useEffect:", sumWidth);
 
-      const scrollerWidth = ref.current.querySelector('.section__panel:not(.section__panel_hidden)').offsetWidth;
-      console.log("scrollerWidth:", scrollerWidth);
-
+      for (let i = 0; i < 5; i++) {
+        console.log(refDiv[i].current.offsetWidth);
+      }
 
       const newHasRightScroll = sumWidth > ref.current.offsetWidth;
       if (newHasRightScroll !== hasRightScroll) {
@@ -962,7 +965,6 @@
           </ul>
         </div>
       </section>
-
       <section className="section main__scripts">
         <h2 className="section__title section__title-header">Избранные сценарии</h2>
 
@@ -1015,7 +1017,6 @@
             )}
           </select>
 
-
           <ul role="tablist" className="section__tabs">
             {TABS_KEYS.map(key =>
               <li
@@ -1032,13 +1033,12 @@
               </li>
             )}
           </ul>
-
         </div>
 
         <div className="section__panel-wrapper" ref={ref}>
-          {TABS_KEYS.map(key =>
+          {TABS_KEYS.map((key, i) =>
             <div
-              //ref={refDiv}
+              ref={refDiv[i]}
               key={key}
               role="tabpanel"
               className={'section__panel' + (key === activeTab ? '' : ' section__panel_hidden')}
