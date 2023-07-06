@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.24 -->
+<!--    version 0.0.25 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -860,17 +860,9 @@
 
     console.log("new main");
 
-    let sizes = [];
-    const onSize = size => {
-      sizes = [...sizes, size];
-    };
-
     React.useEffect(() => {
 
-      const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
       console.log("activeTab:", activeTab);
-      console.log("sumWidth from Events:", sumWidth);
-
       const widths = refs.map(ref => ref.current.scrollWidth);
       const maxWidth = Math.max(...widths);
       console.log("maxWidth from refs:", maxWidth);
@@ -894,19 +886,7 @@
     };
 
     function Event(props) {
-      const ref = React.useRef();
-
-      const { onSize } = props;
-
-      React.useEffect(() => {
-        const width = ref.current.offsetWidth;
-        //const height = ref.current.offsetHeight;
-        if (onSize) {
-          onSize({ width });
-        }
-      });
-
-      return <li ref={ref} className={'event' + (props.slim ? ' event_slim' : '')}>
+      return <li className={'event' + (props.slim ? ' event_slim' : '')}>
         <button className="event__button">
           <span className={`event__icon event__icon_${props.icon}`} role="img" aria-label={props.iconLabel}></span>
           <h4 className="event__title">{props.title}</h4>
@@ -1056,7 +1036,6 @@
                 {TABS[key].items.map((item, index) =>
                   <Event
                     key={index}
-                    onSize={onSize}
                     {...item}
                   />
                 )}
