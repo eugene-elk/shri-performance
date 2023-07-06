@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.18 -->
+<!--    version 0.0.19 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -870,7 +870,12 @@
       console.log("one more useEffect:", sumWidth);
 
       for (let i = 0; i < 5; i++) {
-        console.log(refDiv[i].current.offsetWidth);
+        if (refDiv[i].current) {
+          console.log(refDiv[i].current?.offsetWidth);
+        }
+        else {
+          console.log("no refDiv");
+        }
       }
 
       const newHasRightScroll = sumWidth > ref.current.offsetWidth;
