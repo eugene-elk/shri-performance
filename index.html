@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.27 -->
+<!--    version 0.0.28 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -837,11 +837,11 @@
   };
 
   let uniqueEvents = new Set();
-  TABS.forEach((tab) => {
-    tab.items.forEach((item) => {
+  for (let key in TABS) {
+    TABS[key].items.forEach((item) => {
       uniqueEvents.add(JSON.stringify(item));
     })
-  });
+  }
 
   for (let event of uniqueEvents) {
     console.log(event);
