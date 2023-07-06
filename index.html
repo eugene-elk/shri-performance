@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.22 -->
+<!--    version 0.0.23 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -869,11 +869,12 @@
 
       const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
       console.log("activeTab:", activeTab);
-      console.log("one more useEffect:", sumWidth);
+      console.log("sumWidth from Events:", sumWidth);
 
-      refs.forEach(refEl => {
-        console.log(refEl.current.scrollWidth);
-      });
+      const widths = refs.map(ref => ref.current.scrollWidth);
+      const maxWidth = Math.max(...widths);
+      console.log("maxWidth from refs:", maxWidth);
+      console.log("window width:", ref.current.offsetWidth);
 
       const newHasRightScroll = sumWidth > ref.current.offsetWidth;
       if (newHasRightScroll !== hasRightScroll) {
