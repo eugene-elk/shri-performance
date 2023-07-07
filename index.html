@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.1.1 -->
+<!--    version 0.1.2 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -913,7 +913,7 @@
   }
 
   for (let i = 0; i < 6; ++i) {
-    TABS.all.items = [...TABS.all.items, ...TABS.all.items];
+    TABS.all.items = TABS.all.items.concat(TABS.all.items);
   }
   const TABS_KEYS = Object.keys(TABS);
 
@@ -1184,17 +1184,18 @@
     );
   }
 
+  const element = React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(Header, null),
+    React.createElement(Main, null)
+  );
+
   setTimeout(() => {
     const root = ReactDOM.createRoot(document.getElementById('app'));
-    root.render(
-      React.createElement(
-        React.Fragment,
-        null,
-        React.createElement(Header, null),
-        React.createElement(Main, null)
-      )
-    );
-  }, 100);
+    root.render(element);
+  }, 10);
+
 </script>
 
 </body>
