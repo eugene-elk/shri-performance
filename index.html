@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.31 -->
+<!--    version 0.0.32 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -882,6 +882,19 @@
     })
   }
 
+  let groupOfComponents = new Map();
+  for (let key in TABS) {
+    if (!groupOfComponents[key]) {
+      groupOfComponents[key] = (
+        <React.Fragment>
+          {TABS[key].items.map((item, index) =>
+            uniqueEventsComponents[item.event]
+          )}
+        </React.Fragment>
+      )
+    }
+  }
+
   for (let i = 0; i < 6; ++i) {
     TABS.all.items = [...TABS.all.items, ...TABS.all.items];
   }
@@ -1062,9 +1075,7 @@
                 className="section__panel-list"
                 ref={getRef(index_wrapper)}
               >
-                  {TABS[key].items.map((item, index) =>
-                    uniqueEventsComponents[item.event]
-                  )}
+                {groupOfComponents[key]}
               </ul>
             </div>
           )}
