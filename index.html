@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.30 -->
+<!--    version 0.0.31 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -865,26 +865,21 @@
     }
   };
 
-  let uniqueEvents = new Map();
+  let uniqueEventsComponents = new Map();
   for (let key in TABS) {
     TABS[key].items.forEach((item) => {
-      if (!uniqueEvents[item.event]) {
-        uniqueEvents[item.event] = item;
+      if (!uniqueEventsComponents[item.event]) {
+        uniqueEventsComponents[item.event] = (
+          <Event
+            key={key}
+            icon={item.icon}
+            iconLabel={item.iconLabel}
+            title={item.title}
+            subtitle={item.subtitle}
+          />
+        )
       }
     })
-  }
-
-  let uniqueEventsComponents = new Map();
-  for (let key in uniqueEvents) {
-    uniqueEventsComponents[key] = (
-      <Event
-        key={key}
-        icon={uniqueEvents[key].icon}
-        iconLabel={uniqueEvents[key].iconLabel}
-        title={uniqueEvents[key].title}
-        subtitle={uniqueEvents[key].subtitle}
-      />
-    )
   }
 
   for (let i = 0; i < 6; ++i) {
