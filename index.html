@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<!--    version 0.0.32 -->
+<!--    version 0.0.33 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -882,6 +882,11 @@
     })
   }
 
+  for (let i = 0; i < 6; ++i) {
+    TABS.all.items = [...TABS.all.items, ...TABS.all.items];
+  }
+  const TABS_KEYS = Object.keys(TABS);
+
   let groupOfComponents = new Map();
   for (let key in TABS) {
     if (!groupOfComponents[key]) {
@@ -894,11 +899,6 @@
       )
     }
   }
-
-  for (let i = 0; i < 6; ++i) {
-    TABS.all.items = [...TABS.all.items, ...TABS.all.items];
-  }
-  const TABS_KEYS = Object.keys(TABS);
 
   function Main() {
     const ref = React.useRef();
